@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UJIAN ONLINE CBT</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/98/Kota_Bengkulu.png" />
+  <title>ANGKRINGAN MAKMUR</title>
+  <link rel="icon" href="" />
   <style>
     html, body {
       margin: 0;
@@ -33,7 +33,6 @@
   <div class="iframe-container">
     <iframe
       id="app"
-      src="https://script.google.com/macros/s/AKfycbyjlF2fHKWiSa2F1UINStD2_s94pLV-R32FreCL3lLQVA7PiNnGCcPYCpphw-Qacp1W/exec"
       scrolling="yes"
       allowfullscreen="true"
       webkitallowfullscreen="true"
@@ -41,5 +40,21 @@
       allow="fullscreen; camera; microphone; display-capture; geolocation;">
     </iframe>
   </div>
+
+  <script>
+    (function () {
+      // URL dasar aplikasi Apps Script (GAS).
+      var GAS_URL = "https://script.google.com/macros/s/AKfycbyjlF2fHKWiSa2F1UINStD2_s94pLV-R32FreCL3lLQVA7PiNnGCcPYCpphw-Qacp1W/exec";
+
+      // Teruskan parameter ?admin=true (atau #admin) dari URL halaman wrapper ini
+      // ke URL iframe, supaya GAS doGet() ikut menerimanya.
+      var params = new URLSearchParams(window.location.search);
+      var isAdmin = params.get("admin") === "true" || /#admin\b/i.test(window.location.hash);
+
+      var finalSrc = isAdmin ? (GAS_URL + "?admin=true") : GAS_URL;
+
+      document.getElementById("app").src = finalSrc;
+    })();
+  </script>
 </body>
 </html>
